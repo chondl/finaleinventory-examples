@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="OrderCalendar">
+<head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+  <script src="https://app.finaleinventory.com/www_secure/integrations/finaleapi/finaleapi.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.min.js"></script>
+
+  <script src="calendar.js"></script>
+  <script src="ng-table.src.js"></script>
+  <script src="ordercalendar.js"></script>
+
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.4/fullcalendar.print.css"/>
+
+  <link rel="stylesheet" href="ng-table.css"/>
+
+  <style>
+    html, body {margin: 0; padding:0;}
+  </style>
+
+</head>
+
+<body>
+  <div ng-controller="OrderController as orders">
+    <div ui-calendar="calendarSettings" ng-model="events" calendar="calendar"> </div>
+  </div>
+</body>
+</html>
+

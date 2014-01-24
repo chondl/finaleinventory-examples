@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <!-- Finale add-on API has a dependency on lodash.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script> 
+
+  <!-- Load the Finale add-on API that implements the protocol for communicating with the host window. -->
+  <script src="https://app.finaleinventory.com/www_secure/integrations/finaleapi/finaleapi.min.js"></script>
+
+  <script>
+    
+    // Add-ons must provide basic configuration information when they connect to the host window
+    var host = finaleapi.hostConnection({ title:'Hello Finale', description:'Minimal add-on for Finale.' })
+  
+    // The show event fires when the host once the add-on to display a specific screen
+    host.addListener('show', function(screen, params) {
+
+      // Inform the host how tell the iframe containing this add-on should be
+      host.scrollHeightWrite(300)
+
+      // Inform the host that we are ready to disply (prevents previously displayed content from being flashed on the screen)
+      host.showReadyNotify()
+    })
+  </script>
+
+  <style>
+    html, body {margin: 0; padding:0;width:400px;}
+    p {margin: 0px; padding:0 0 10px 0; font: normal 16px/20px sans-serif; }
+  </style>
+
+</head>
+
+<body>
+  <p>
+    This add-on demonstrates the minimal code required to extend finale.  
+  </p>
+  <p>
+    It consists of a single HTML file that includes Finale's JavaScript API for add-ons and a few lines of Javascript to configure its display. 
+  </p>
+</body>
+</html>
