@@ -1,17 +1,5 @@
 ;(function() {
 
-  // Helper to convert from the tabular format used by Finale's API to an object mapping from the primary key of the collection to an object per instance:
-  // 
-  // tableToObjects(['orderUrl','orderId','orderTypeId'], {orderUrl:['/o/892','/o/893'], orderId:['892','ABC'], orderTypeId:['PURCHASE_ORDER','SALES_ORDER']})
-  //
-  // --->
-  // 
-  // {"/o/892":{orderUrl:"/o/892",orderId:"892",orderTypeId:"PURCHASE_ORDER"},"/o/893":{orderUrl:"/o/893",orderId:"ABC",orderTypeId:"SALES_ORDER"}} 
-  //
-  function tableToObjects(fields, table) {
-    return _.zipObject(table[fields[0]], _.zip.apply(_, _(fields).map(function(field) { return table[field] }).value()).map(function(values) { return _.zipObject(fields, values) }))
-  }
-
   angular
     .module('OrderCalendar', ['ui.calendar'])
 
@@ -40,7 +28,11 @@
       host.addListener('show', function() {
         _(results).forEach(function(v,k) {
           host.resourceGET(k, {fields:v.fields}, function(err, data) { $timeout(function() {
-            v.data = tableToObjects(v.fields, data.rslt)
+
+            // The function finaleapi.transposeTable converts a column major table in Finale API's usual format to an array of objects
+            // For example, it converts {a:[1,2], b:[4,null]} to [{a:1,b:4}, {a:2, b:null}]
+            // This is wrapped in a bit lodash code to index the objects by their primary key field, which in this example is always the first field
+            v.data = _(finaleapi.transposeTable(data.rslt)).map(function(cur) { return [cur[v.fields[0]], cur]}).zipObject().value()
 
             // When all data has loaded, convert the ISO8601 orderDate into a JavaScipt Date object and force the calendar to update
             if (_(results).every(function(v) { return v.data})) {
