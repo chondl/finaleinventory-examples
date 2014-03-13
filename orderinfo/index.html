@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" ng-app="OrderInfo">
+<head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+
+  <script src="https://app.finaleinventory.com/www_secure/integrations/finaleapi/finaleapi.min.js"></script>
+
+  <script src="ng-table.src.js"></script>
+  <script src="orderinfo.js"></script>
+
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="ng-table.css"/>
+  <link rel="stylesheet" href="orderinfo.css"/>
+
+  <style>
+    html, body {margin: 0; padding:0;}
+  </style>
+
+</head>
+
+<body>
+  <div ng-controller="OrderListController">
+    <p> 
+      This add-on demonstrates editing information on an order, including complex information defined by the add-on.
+    </p>
+    <table ng-table="tableParams" class="table">
+      <tr ng-repeat-start="order in $data">
+        <td valign="middle" data-title="'Order ID'" width="160">{{order.orderId}}</td>
+        <td valign="middle" data-title="'Customer'">{{order.customer}}</td>
+        <td valign="middle" data-title="'Order date'" width="400">{{order.orderDate}}</td>
+        <td valign="middle" data-title="" width="60"><a class="btn btn-default btn-xs" ng-click="edit(order)">{{(order.$edit && "hide") || "edit"}}</a></td>
+      </tr>
+      <tr ng-if="order.$edit" ng-repeat-end>
+        <td class="edit" colspan="3">
+          <div class="container-fluid" ng-controller="OrderContentController">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="insurance">Insurance</label>
+                  <input type="text" class="form-control" name="insurance" ng-disabled="!content" ng-model="content.insurance">
+                </div>     
+                <div class="form-group">
+                  <label for="permit">Permit</label>
+                  <input type="text" class="form-control" name="permit" ng-disabled="!content" ng-model="content.permit">
+                </div>     
+              </div>
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="Driver">Driver</label>
+                  <input type="text" class="form-control" name="driver" ng-disabled="!content" ng-model="content.driver">
+                </div>     
+                <div class="form-group">
+                  <label for="projectMgr">Project manager</label>
+                  <input type="text" class="form-control" name="projectMgr" ng-disabled="!content" ng-model="content.projectMgr">
+                </div>     
+              </div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="notes">Notes:</label>
+                  <textarea class="form-control" name="notes" ng-disabled="!content" ng-model="content.notes"></textarea>
+                </div>     
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+.table td.edit { border-top:none;padding-top:none; }
+.table td.edit textarea { height:107px; }
+.ng-table th { text-align:left; }
