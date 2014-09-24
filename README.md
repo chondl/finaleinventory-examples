@@ -1,7 +1,11 @@
 finaleinventory-examples
 ========================
 
-Examples for working with APIs for finaleinventory.com.  Finale has two different API sets.  The REST API allows other systems to read and update data stored on the Finale service.  The add-on API adds user interface elements to extend the Finale user interface using HTML and JavaScript.
+Examples for working with APIs for finaleinventory.com.  Finale has two different API sets.
+
+The REST API allows other systems to read and update data stored on the Finale service.  Documentation at http://www.finaleinventory.com/developer/.
+
+The add-on API adds user interface elements to extend the Finale user interface using HTML and JavaScript.  Documentation at http://www.finaleinventory.com/wfi/Integration_Add_ons
 
 - REST API examples:
   
