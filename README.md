@@ -2,3 +2,16 @@ finaleinventory-examples
 ========================
 
 Examples for working with APIs for finaleinventory.com
+
+- Add-on examples
+
+  - **hellofinale** Simplest possible add-on that displays static HTML 
+  
+  - **orderinfo** Display calendar of open purchase and sales orders (uses AngularJS and FullCalendar jQuery plugin)
+
+  - **ordercalendar** Display table of open sales orders and present form to collect additional info on each sales (uses AngularJS)
+  
+- REST API examples:
+  
+  - **php** Examples of calling REST API from PHP
+
