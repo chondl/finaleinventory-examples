@@ -3,7 +3,9 @@ finaleinventory-examples
 
 Examples for working with APIs for finaleinventory.com
 
-- Add-on examples
+- Add-on examples:
+
+Finale add-ons extend the Finale user interface with new functionality.
 
   - **hellofinale** Simplest possible add-on that displays static HTML 
   
