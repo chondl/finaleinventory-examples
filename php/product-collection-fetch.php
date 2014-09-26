@@ -9,12 +9,12 @@ $authPath = "/demo/api/auth";
 $username = "test";
 $password = "finale";
 
-$auth = finale_auth($host.$authPath, $username, $password);
+$auth = finale_auth($host, $authPath, $username, $password);
 
 echo "Authenticated successfully username=".$auth["auth_response"]->name."\n";
 
 // Request product data 
-curl_setopt($auth['curl_handle'], CURLOPT_URL, $host . $auth['auth_response']->resourceProduct);
+curl_setopt($auth['curl_handle'], CURLOPT_URL, $auth['host'] . $auth['auth_response']->resourceProduct);
 curl_setopt($auth['curl_handle'], CURLOPT_HTTPGET, true);
 
 $result = curl_exec($auth['curl_handle']);

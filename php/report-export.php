@@ -9,7 +9,7 @@ $authPath = "/demo/api/auth";
 $username = "test";
 $password = "finale";
 
-$auth = finale_auth($host.$authPath, $username, $password);
+$auth = finale_auth($host, $authPath, $username, $password);
 
 echo "Authenticated successfully username=".$auth["auth_response"]->name."\n";
 
