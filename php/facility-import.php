@@ -1,6 +1,21 @@
 #!/usr/bin/php
 <?php
 
+/*
+
+USAGE: 
+  - call with account path component, username and password as first three arguments on the command line
+
+cat ~/facility.csv | php facility-import.php demo test PASSWORD
+    
+  - pipe CSV with the following structure to STDIN
+
+Facility: Name, Facility: Parent name
+TEST 001, Warehouse
+TEST 002, Warehouse
+TEST 003, Warehouse
+*/
+
 require('./auth.php');
 
 $headerColumns = fgetcsv(STDIN, 1000, ",");
@@ -19,9 +34,9 @@ while (($data = fgetcsv(STDIN, 1000, ",")) !== FALSE) {
 
 // Replace these variables with appropriate values for your company and user accounts
 $host = "https://app.finaleinventory.com";
-$authPath = "/demo/api/auth";
-$username = $argv[1];
-$password = $argv[2];
+$authPath = "/{$argv[1]}/api/auth";
+$username = $argv[2];
+$password = $argv[3];
 
 $auth = finale_auth($host, $authPath, $username, $password);
 
