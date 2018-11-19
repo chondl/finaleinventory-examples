@@ -24,7 +24,7 @@ function finale_auth($host, $path, $username, $password) {
     $body = substr($response, $header_size);
   
     // Pull out all JSESSIONID cookie headers
-    preg_match_all('|Set-Cookie: JSESSIONID=(.*);|U', $header, $cookies);    
+    preg_match_all('|Set-Cookie: JSESSIONID=(.*);|Ui', $header, $cookies);    
   
     // Don't return headers in future http requests to keep them simple (reuse to curl handle for automatic cookie handling)
     curl_setopt($ch, CURLOPT_HEADER, 0);
